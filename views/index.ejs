@@ -1,14 +1,83 @@
-<div class="px-4 py-5 my-5 text-center">
-  <object data="/images/icon.svg" width="200" height="200"></object>
-  <h1 class="display-5 fw-bold">Synthesis-Team</h1>
-  <div class="col-lg-6 mx-auto">
-    <p class="lead mb-4">
-      Let's make this world more colorful with programming language
-    </p>
-    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-      <a class="btn btn-outline-gradient py-2" href="/auth/login"
-        ><span>Sign in</span></a
-      >
+<section class="min-h-screen flex items-center bg-slate-50 dark:bg-slate-900">
+  <div class="container mx-auto px-6 py-20">
+    <div class="max-w-4xl mx-auto text-center">
+      <object data="/images/icon.svg" width="120" height="120" class="mx-auto mb-6"></object>
+      <h1 class="text-4xl sm:text-5xl font-semibold text-slate-900 dark:text-slate-100 mb-3">Synthesis-Team API</h1>
+      <p class="text-lg text-slate-600 dark:text-slate-300 mb-6">
+        Curated REST endpoints — scrapers, public data feeds, auth and developer tools.
+        Predictable JSON responses, simple API keys and clear rate limits.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <a href="/docs" class="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-indigo-600 to-cyan-500 text-white rounded-md shadow">API Docs</a>
+        <a href="/auth/login" class="inline-flex items-center justify-center px-6 py-3 border border-slate-200 dark:border-slate-700 rounded-md text-slate-700 dark:text-slate-200">Sign in</a>
+      </div>
+    </div>
+
+    <div class="mt-12 grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+      <div class="p-6 bg-white dark:bg-slate-800 rounded-xl shadow">
+        <div class="flex items-start justify-between">
+          <div>
+            <h3 class="text-lg font-medium text-slate-900 dark:text-slate-100">Auth</h3>
+            <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Manage API keys, tokens and authentication flows.</p>
+          </div>
+          <div class="text-indigo-500 text-2xl">🔑</div>
+        </div>
+        <div class="mt-4">
+          <span class="inline-block text-xs bg-indigo-100 text-indigo-800 px-2 py-1 rounded">POST /auth/login</span>
+        </div>
+      </div>
+
+      <div class="p-6 bg-white dark:bg-slate-800 rounded-xl shadow">
+        <div class="flex items-start justify-between">
+          <div>
+            <h3 class="text-lg font-medium text-slate-900 dark:text-slate-100">Scraper</h3>
+            <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Search and fetch public content via simple endpoints.</p>
+          </div>
+          <div class="text-cyan-500 text-2xl">🕸️</div>
+        </div>
+        <div class="mt-4">
+          <span class="inline-block text-xs bg-cyan-100 text-cyan-800 px-2 py-1 rounded">GET /api/scraper/tiktok?query=...</span>
+        </div>
+      </div>
+
+      <div class="p-6 bg-white dark:bg-slate-800 rounded-xl shadow">
+        <div class="flex items-start justify-between">
+          <div>
+            <h3 class="text-lg font-medium text-slate-900 dark:text-slate-100">Public Data</h3>
+            <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Feeds like BMKG earthquake data exposed as JSON.</p>
+          </div>
+          <div class="text-amber-500 text-2xl">🌏</div>
+        </div>
+        <div class="mt-4">
+          <span class="inline-block text-xs bg-amber-100 text-amber-800 px-2 py-1 rounded">GET /api/bmkg/gempa</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-10 max-w-3xl mx-auto bg-white dark:bg-slate-800 p-6 rounded-xl shadow">
+      <div class="flex items-center justify-between">
+        <div>
+          <h4 class="text-lg font-medium text-slate-900 dark:text-slate-100">Quick start</h4>
+          <p class="text-sm text-slate-600 dark:text-slate-300 mt-1">Example curl to fetch BMKG earthquake data</p>
+        </div>
+        <span class="text-sm text-slate-500 dark:text-slate-400">JSON</span>
+      </div>
+
+      <pre class="mt-4 overflow-x-auto rounded-md bg-slate-900 text-white text-sm p-4">
+curl -s "https://your-domain.com/api/bmkg/gempa" | jq .
+      </pre>
+
+      <div class="mt-4 flex flex-wrap gap-3">
+        <a href="/api" class="text-sm px-4 py-2 bg-slate-100 dark:bg-slate-700 rounded-md">View endpoints</a>
+        <a href="/docs" class="text-sm px-4 py-2 bg-indigo-600 text-white rounded-md">Open API docs</a>
+      </div>
+    </div>
+
+    <div class="mt-8 text-center text-sm text-slate-500 dark:text-slate-400">
+      <p>Designed for developers — clean responses, predictable rate limits, and simple API keys.</p>
     </div>
   </div>
-</div>
+</section>
+    </div>
+  </div>
+</section>

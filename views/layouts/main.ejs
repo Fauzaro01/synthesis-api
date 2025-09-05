@@ -1,26 +1,93 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
-
-   <head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Synthesis-Team</title>
     <meta name="description" content="">
     <meta name="author" content="">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css" rel="stylesheet">
-    <link href="css/main.css" rel="stylesheet">
+    <!-- Use compiled Tailwind output (build with your Tailwind CLI) -->
+    <link href="/css/style.css" rel="stylesheet">
+    <!-- Optional fallback font (can be kept or removed if handled in Tailwind build) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>html,body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;}</style>
     <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.png">
-    <link rel="icon" type="image/x-icon" href="images/favicon.png">
   </head>
 
-  <body id="top">
+  <body id="top" class="bg-slate-50 dark:bg-slate-900 text-slate-800">
+      <!-- Tailwind responsive navbar -->
+      <nav class="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex justify-between h-16 items-center">
+            <div class="flex items-center">
+              <a href="/" class="flex items-center gap-3">
+                <img src="/images/icon.svg" alt="Synthesis" class="h-8 w-8"/>
+                <span class="font-semibold text-slate-900 dark:text-slate-100">Synthesis-Team</span>
+              </a>
+              <div class="hidden md:flex md:ml-8 md:space-x-4">
+                <a href="/" class="px-3 py-2 text-sm rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">Home</a>
+                <a href="/docs" class="px-3 py-2 text-sm rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">Docs</a>
+                <a href="/api" class="px-3 py-2 text-sm rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">APIs</a>
+              </div>
+            </div>
 
-      <%- include('nav')  %> 
+            <div class="flex items-center space-x-4">
+              <a href="/docs" class="hidden sm:inline-flex items-center px-3 py-2 bg-gradient-to-r from-indigo-600 to-cyan-500 text-white text-sm rounded-md shadow">API Docs</a>
+
+              <% if (user) { %>
+                <div class="relative">
+                  <button id="userMenuBtn" class="flex items-center gap-2 text-sm rounded-md focus:outline-none" onclick="document.getElementById('userMenu').classList.toggle('hidden')">
+                    <img src="/images/profile_pic.png" alt="avatar" class="h-8 w-8 rounded-full"/>
+                    <span class="hidden sm:inline text-slate-800 dark:text-slate-100"><%= user.username || user.displayName || 'User' %></span>
+                  </button>
+                  <div id="userMenu" class="hidden absolute right-0 mt-2 w-44 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-md shadow-lg py-1 z-50">
+                    <a href="/profile" class="block px-4 py-2 text-sm hover:bg-slate-100 dark:hover:bg-slate-700">Profile</a>
+                    <a href="/auth/apikeys" class="block px-4 py-2 text-sm hover:bg-slate-100 dark:hover:bg-slate-700">API Keys</a>
+                    <div class="border-t border-slate-100 dark:border-slate-700"></div>
+                    <a href="/auth/logout" class="block px-4 py-2 text-sm text-rose-600 hover:bg-slate-100 dark:hover:bg-slate-700">Log out</a>
+                  </div>
+                </div>
+              <% } else { %>
+                <div class="hidden sm:flex items-center gap-2">
+                  <a href="/auth/login" class="px-3 py-2 text-sm rounded-md border border-slate-200 dark:border-slate-700">Sign in</a>
+                  <a href="/auth/register" class="px-3 py-2 text-sm rounded-md bg-indigo-600 text-white">Sign up</a>
+                </div>
+              <% } %>
+
+              <!-- Mobile menu button -->
+              <button class="md:hidden inline-flex items-center justify-center p-2 rounded-md" aria-expanded="false" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="md:hidden hidden border-t border-slate-100 dark:border-slate-700">
+          <div class="px-2 pt-2 pb-3 space-y-1">
+            <a href="/" class="block px-3 py-2 rounded-md text-base">Home</a>
+            <a href="/docs" class="block px-3 py-2 rounded-md text-base">Docs</a>
+            <a href="/api" class="block px-3 py-2 rounded-md text-base">APIs</a>
+            <% if (user) { %>
+              <a href="/profile" class="block px-3 py-2 rounded-md text-base">Profile</a>
+              <a href="/auth/logout" class="block px-3 py-2 rounded-md text-base text-rose-600">Log out</a>
+            <% } else { %>
+              <a href="/auth/login" class="block px-3 py-2 rounded-md text-base">Sign in</a>
+              <a href="/auth/register" class="block px-3 py-2 rounded-md bg-indigo-600 text-white">Sign up</a>
+            <% } %>
+          </div>
+        </div>
+      </nav>
       <%- body %> 
 
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-     <script src="/js/index.js"></script>
+     <!-- Small helper: close user menu if clicked outside -->
+     <script>
+       document.addEventListener('click', function(e){
+         const m = document.getElementById('userMenu');
+         const b = document.getElementById('userMenuBtn');
+         if (m && b && !b.contains(e.target) && !m.contains(e.target)) m.classList.add('hidden');
+       });
+     </script>
   </body>
+</html>
 </html>
