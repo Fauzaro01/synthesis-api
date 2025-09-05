@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const session = require('express-session');
@@ -14,7 +15,7 @@ const indexRouter = require('./routes/index');
 const authRouter = require('./routes/auth');
 const apiRouters = require('./routes/api');
 
-const { connectMongoDb } = require('./database/connect');
+const { connectMongoDb } = require('./database');
 
 connectMongoDb();
 
@@ -69,11 +70,11 @@ app.use('/api', apiRouters);
 
 // 404 Handle
 
-// app.get("*", (req , res) => {
-// 	res.render('notFound', {
-// 		layout: false
-// 	})
-// })
+app.get("*", (req , res) => {
+	res.render('notFound', {
+		layout: false
+	})
+})
 
 app.set('json spaces', 4);
 

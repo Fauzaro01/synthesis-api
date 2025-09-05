@@ -5,6 +5,7 @@ function connectMongoDb() {
 		useNewUrlParser: true,
 		useUnifiedTopology: true,
 	});
+	mongoose.set('strictQuery', false);
 	const db = mongoose.connection;
 	db.on('error', console.error.bind(console, 'connection error:'));
 	if (process.env.NODE_ENV === 'development') {
