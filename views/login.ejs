@@ -30,7 +30,18 @@
         <label class="block relative">
           <span class="text-sm text-slate-700 dark:text-slate-200">Password</span>
           <input id="password" type="password" name="password" required class="mt-1 block w-full rounded-md border-slate-200 dark:border-slate-700 bg-transparent px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 pr-10" />
-          <button type="button" onclick="togglePassword()" class="absolute right-2 top-9 text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 text-sm">Show</button>
+          <button type="button" aria-label="Toggle password visibility" class="absolute right-2 top-9 text-slate-400 hover:text-slate-600 dark:hover:text-slate-300" onclick="togglePassword(event)">
+            <!-- eye (visible when password is hidden) -->
+            <svg class="h-5 w-5 eye" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.477 0 8.268 2.943 9.542 7-1.274 4.057-5.065 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+            </svg>
+            <!-- eye-off (visible when password is shown) -->
+            <svg class="h-5 w-5 hidden eye-off" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3l18 18" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.58 10.58A3 3 0 0113.42 13.42" />
+            </svg>
+          </button>
         </label>
 
         <div>
@@ -54,11 +65,21 @@
     </main>
 
     <script>
-      function togglePassword(){
+      function togglePassword(event){
+        const btn = event.currentTarget;
         const p = document.getElementById('password');
         if(!p) return;
-        if(p.type === 'password'){ p.type = 'text'; }
-        else { p.type = 'password'; }
+        const eye = btn.querySelector('.eye');
+        const eyeOff = btn.querySelector('.eye-off');
+        if(p.type === 'password'){
+          p.type = 'text';
+          if(eye) eye.classList.add('hidden');
+          if(eyeOff) eyeOff.classList.remove('hidden');
+        } else {
+          p.type = 'password';
+          if(eye) eye.classList.remove('hidden');
+          if(eyeOff) eyeOff.classList.add('hidden');
+        }
       }
     </script>
   </body>
