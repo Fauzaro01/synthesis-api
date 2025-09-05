@@ -2,9 +2,13 @@
   "name": "synthesis-web",
   "version": "0.1",
   "private": true,
+  "description": "MyFirst Project APIs ExpressJS",
+  "repository": "https://github.com/Fauzaro01/synthesis-api.git",
+  "author": "Fauzaro01 <MuhamadFauzan4750@gmail.com>",
+  "license": "MIT",
   "scripts": {
     "start": "node ./bin/www",
-    "start:dev": "set DEBUG=synthesis-web:* && node ./bin/www"
+    "dev": "nodemon"
   },
   "dependencies": {
     "axios": "^0.27.2",
@@ -38,10 +42,5 @@
     "eslint": "^8.29.0",
     "eslint-config-xo": "^0.43.1",
     "prettier": "^2.8.3"
-  },
-  "description": "MyFirst Project APIs ExpressJS",
-  "main": "./bin/www",
-  "repository": "https://github.com/Synthesis-Team/synthesis-web.git",
-  "author": "Fauzaro01 <MuhamadFauzan4750@gmail.com>",
-  "license": "MIT"
+  }
 }
