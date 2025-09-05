@@ -1,6 +1,6 @@
 {
   "restartable": "rs",
   "ignore": [".git", "**/node_modules/*", "*.ejs"],
-  "exec": "node app",
+  "exec": "node ./bin/www",
   "ext": "js"
 }
