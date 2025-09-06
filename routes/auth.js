@@ -7,7 +7,7 @@ const recaptcha = new Recaptcha(process.env.RECAPTCHA_KEY_1, process.env.RECAPTC
 
 const { getHashedPassword, randomText } = require('../lib/function');
 const { checkUsername, addUser } = require('../database/db');
-const { notAuthenticated, captchaLogin, captchaRegister } = require('../lib/auth');
+const { notAuthenticated, captchaLogin, captchaRegister } = require('../middlewares/auth');
 
 router.get('/login', notAuthenticated, recaptcha.middleware.render, (req, res) => {
 	res.render('login', {
