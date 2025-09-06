@@ -11,7 +11,7 @@
   <% }) %>
 <% } %>
 
-<% if (typeof error_msg !== 'undefined' && error_msg.length) { %>
+<% if (typeof error_msg !== 'undefined' && error_msg.length ) { %>
   <% error_msg.forEach(function(m){ %>
     <div class="mb-4 p-4 rounded-lg bg-red-50 border-l-4 border-rose-400 text-rose-800 flex justify-between items-start" role="alert">
       <div class="mr-4">
@@ -23,7 +23,7 @@
   <% }) %>
 <% } %>
 
-<% if (typeof error !== 'undefined' && error) { %>
+<% if (typeof error !== 'undefined' && error != '') { %>
   <div class="mb-4 p-4 rounded-lg bg-red-50 border-l-4 border-rose-400 text-rose-800 flex justify-between items-start" role="alert">
     <div class="mr-4">
       <strong class="block font-medium">Error</strong>
